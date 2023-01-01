@@ -51,19 +51,28 @@ body {
 .header-title h1 {
     width: 100%;
     font-weight: 700;
-    font-size: 72px;
-    letter-spacing: -4px;
+    font-size: 3em;
+    letter-spacing: 1px;
     line-height: 1.2em;
     text-align: center;
     margin: 0;
+    text-transform: uppercase;
 }
 
 .header-subtitle h2 {
-    font-size: 20px;
+    font-size: 1.4em;
     font-style: normal;
     font-weight: 400;
     line-height: 1.4em;
     color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+
+
+}
+
+
+.header-subtitle p {
+    text-align: center;
 }
 
 .prompt-container {
@@ -76,6 +85,10 @@ body {
     height: min-content;
     padding: 0px;
     width: min-content;
+}
+
+.prompt-container p {
+    color: #ffffff;
 }
 
 .prompt-box {
@@ -282,6 +295,10 @@ textarea {
     width: 100%;
 }
 
+.output-container {
+
+}
+
 .output-header-container {
     place-content: center;
     align-items: center;
@@ -320,8 +337,8 @@ textarea {
     transform: none;
 }
 
-.output-content p {
-    text-align: center;
+.output-content div {
+    text-align: left;
     white-space: pre-line;
     color: rgba(255, 255, 255, 0.5);
 }
