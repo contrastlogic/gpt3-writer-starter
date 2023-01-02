@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import buildspaceLogo from '../assets/buildspace-logo.png';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 
 const Home = () => {
@@ -39,53 +39,71 @@ const Home = () => {
   };
 
 
-
-
   const onUserChangedText = (event) => {
     //console.log(event.target.value);
     setUserInput(event.target.value);
   };
 
   return (
-    <div className="root">
+    <div className="root root-fire-bg">
       <Head>
         <title>GPT-3 Writer | buildspace</title>
       </Head>
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>Enjoy a Personalized Cannabis Journey</h1>
+            <h1 className="burning active">Inbox Inferno</h1>
           </div>
           <div className="header-subtitle">
-            <h2>Tailored Cannabis Strain Recommendations with AI-Powered Guidance</h2>
-            <p>Get personalized recommendations, advice, and education on the perfect cannabis strain for you.</p>
-            <p></p>
+            <h2>The AI-Powered Spam Burner that Delivers a Scalding Response</h2>
           </div>
+          <p>With Inbox Inferno, we'll turn up the heat on pesky spammers and unsolicited messages. One scorching burn from us and they'll think twice before sending another message.</p>
         </div>
         <div className="prompt-container">
-          <textarea
+          {isGenerating ? (
+            <div className="fire">
+              <div className="fire-left">
+                <div className="main-fire"></div>
+                <div className="particle-fire"></div>
+              </div>
+              <div className="fire-main">
+                <div className="main-fire"></div>
+                <div className="particle-fire"></div>
+              </div>
+              <div className="fire-right">
+                <div className="main-fire"></div>
+                <div className="particle-fire"></div>
+              </div>
+              <div className="fire-bottom">
+                <div className="main-fire"></div>
+              </div>
+            </div>
+
+          ) : (
+            <textarea
             className="prompt-box"
-            placeholder="What kind of mood and physical effects are you looking for?"
+            placeholder="What are we responding to?"
             value={userInput}
             onChange={onUserChangedText}
-          />;
-          <div className="prompt-buttons">
-            <a className={isGenerating ? 'generate-button loading' : 'generate-button'} onClick={callGenerateEndpoint}>
-            <div className="generate">
-              {isGenerating ? <span className="loader"></span> : <p>Generate</p>}
-    </div>
-  </a>
-          </div>  
+          />
+          )}
+
+
+        <div className="prompt-buttons">
+          <a className={isGenerating ? 'generate-button-hidden' : 'generate-button'} onClick={callGenerateEndpoint}><p className="burnText">BURN!</p></a>
+        </div>
+
 
           {apiOutput && (
             <div className="output">
               <div className="output-header-container">
                 <div className="output-header">
-                  <h3>Output</h3>
+                  <h3>The Burn</h3>
                 </div>
               </div>
             <div className="output-content">
-              {apiOutput}
+              <div className="alert alert-danger" role="alert">{apiOutput}</div>
+              
             </div>
           </div>
         )}

@@ -7,29 +7,20 @@ const configuration = new Configuration ({
 const openai = new OpenAIApi(configuration);
 
 const basePromptPrefix = 
-`What type of strain would be best suited for the experience listed below. Explain, in list format, what terpenes are favorable for this experience and which ones are unfavorable. Provide a one-line sentence description that links the terpene to the desired experience or unwanted effects. Provide a short list of cannabis strain names that match the desired experience. Conclude with a brief summary of the desired effect and the listed terpenes. Explain as simply as possible why the focus should be on terpenes and not strain type. The tone should remain at a fifth grade reading level that feels conversational and intellegent. Do not use the term marijuana, replace it with cannabis.
+	`Write a sarcastic response declining the message with an absurd response. If a name is included and an emoji or middle initial follows with too many periods, they copy and pasted the name. The sender is a robot and should be shamed for not being human. Do not include any human names that I include. Address the sender as "Robot" or some other mockery. Provide a comedic tip for robots to appear more human. Make sure to respond to any questions with a nonsense response. Format the response as follows:
+	
+	Greeting
 
-Format your response according to the example below with line breaks and bolded headlines included:
+	Message
 
-Strain Type: 
-
-Description: 
-
-Look for these terpenes:
-
-Stay away from these terpenes:
-
-Recommended Strain Names:
-
-Summary:
-
-Desired Experience:
-`;
+	Close with a slightly condescending signature followed by
+	[Your Name]. 
+	`;
 
 const generateAction = async (req, res) => {
 	// Run first prompt
 	//console.log(`API: ${basePromptPrefix}${req.body.userInput}`);
-	console.warn(basePromptPrefix);
+	//console.warn(basePromptPrefix);
 
 	const baseCompletion = await openai.createCompletion({
 		model: 'text-davinci-003',

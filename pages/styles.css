@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&family=Ubuntu&display=swap');
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
+
+
 
 .root {
     display: flex;
@@ -18,6 +19,17 @@ body {
     padding: 0px;
     position: relative;
 }
+
+    .root-fire-bg {
+    background-color: rgb(0, 0, 0);
+      background-image: url('../assets/background-cb10-49b8-a38b-f478faca2cca.png');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.75;
+      height: 100vh;
+    }
 
 .container {
     display: flex;
@@ -49,9 +61,10 @@ body {
 }
 
 .header-title h1 {
+    font-family: 'Sigmar One', cursive;
     width: 100%;
     font-weight: 700;
-    font-size: 3em;
+    font-size: 5em;
     letter-spacing: 1px;
     line-height: 1.2em;
     text-align: center;
@@ -60,7 +73,7 @@ body {
 }
 
 .header-subtitle h2 {
-    font-size: 1.4em;
+    font-size: 1.6em;
     font-style: normal;
     font-weight: 400;
     line-height: 1.4em;
@@ -71,8 +84,11 @@ body {
 }
 
 
-.header-subtitle p {
+.header p {
     text-align: center;
+    width: 75%;
+    font-size: 1.3em;
+    line-height: 1.2em;
 }
 
 .prompt-container {
@@ -93,14 +109,14 @@ body {
 
 .prompt-box {
     border-bottom-width: 1px;
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(0, 0, 0, 0.8);
     border-left-width: 1px;
     border-right-width: 1px;
     border-style: solid;
     border-top-width: 1px;
     place-content: flex-start;
     align-items: flex-start;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.20);
     border-radius: 16px;
     display: flex;
     flex: 0 0 auto;
@@ -116,23 +132,24 @@ body {
     overflow: auto;
     outline: none;
     resize: none;
-    font-size: 16px;
+    font-size: 1.2em;
     font-style: normal;
     letter-spacing: 0px;
-    line-height: 1.6em;
+    line-height: 1.1em;
     text-align: start;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     text-transform: none;
 }
 
 textarea {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 
 .prompt-box:focus {
-    border-color:rgba(255, 255, 255, 0.75)
+    border-color:rgba(255, 255, 255, 0.5);
+    color: #ffffff;
 }
 
 
@@ -186,19 +203,21 @@ textarea {
     place-content: flex-start;
     align-items: flex-start;
     background-color: rgb(255, 79, 18);
-    border-radius: 100px;
+    border-radius: 6px;
     display: flex;
     flex: 0 0 auto;
     flex-flow: column nowrap;
     gap: 10px;
     height: min-content;
     overflow: hidden;
-    padding: 16px 24px;
+    padding: 1px 22px;
     position: relative;
     text-decoration: none;
     width: min-content;
     will-change: transform;
     cursor: pointer;
+    display: inherit;
+    border-color: rgba(0, 0, 0, 0.8);
 }
 
 .generate {
@@ -207,12 +226,17 @@ textarea {
     flex-direction: column;
     justify-content: flex-start;
     flex-shrink: 0;
-    transform: none;
+    
 }
 
 .generate p {
     color: rgb(255, 255, 255);
     margin: 0;
+    text-transform: uppercase;
+}
+
+.generate-button-hidden {
+    display: none!important;
 }
 
 .loading {
@@ -314,12 +338,12 @@ textarea {
 }
 
 .output-header h3 {
-    font-family: "Manrope", serif;
+    font-family: "Sigmar One", serif;
     font-size: 28px;
     font-style: normal;
     font-weight: 800;
     letter-spacing: 0px;
-    line-height: 1.4em;
+    line-height: 1.5em;
     text-align: start;
     color: #ffffff;
     text-decoration: none;
@@ -430,3 +454,206 @@ textarea {
         transform: rotate(360deg);
     }
 }
+
+    /* Fire animation */
+
+@keyframes scaleUpDown {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+  50%,
+  90% {
+    transform: scaleY(1.1);
+  }
+  75% {
+    transform: scaleY(0.95);
+  }
+  80% {
+    transform: scaleX(0.95);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: skewX(0) scale(1);
+  }
+  50% {
+    transform: skewX(5deg) scale(0.9);
+  }
+}
+
+@keyframes particleUp {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: -100%;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    background-color: #ef5a00;
+  }
+  50% {
+    background-color: #ff7800;
+  }
+}
+
+.fire {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  margin-top: 10em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fire-main {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation: scaleUpDown 3s ease-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.fire-main .main-fire {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(farthest-corner at 10px 0, #d43300 0%, #ef5a00 95%);
+  transform: scaleX(0.8) rotate(45deg);
+  border-radius: 0 40% 60% 40%;
+  filter: drop-shadow(0 0 10px #d43322);
+}
+
+.fire-main .particle-fire {
+  position: absolute;
+  top: 60%;
+  left: 45%;
+  width: 10px;
+  height: 10px;
+  background-color: #ef5a00;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px #d43322);
+  animation: particleUp 2s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.fire-right {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  animation: shake 2s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.fire-right .main-fire {
+  position: absolute;
+  top: 15%;
+  right: -25%;
+  width: 80%;
+  height: 80%;
+  background-color: #ef5a00;
+  transform: scaleX(0.8) rotate(45deg);
+  border-radius: 0 40% 60% 40%;
+  filter: drop-shadow(0 0 10px #d43322);
+}
+
+.fire-right .particle-fire {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: #ef5a00;
+  transform: scaleX(0.8) rotate(45deg);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px #d43322);
+  animation: particleUp 2s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.fire-left {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation: shake 3s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.fire-left .main-fire {
+  position: absolute;
+  top: 15%;
+  left: -20%;
+  width: 80%;
+  height: 80%;
+  background-color: #ef5a00;
+  transform: scaleX(0.8) rotate(45deg);
+  border-radius: 0 40% 60% 40%;
+  filter: drop-shadow(0 0 10px #d43322);
+}
+
+.fire-left .particle-fire {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 10%;
+  height: 10%;
+  background-color: #ef5a00;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px #d43322);
+  animation: particleUp 3s infinite ease-out 0;
+  animation-fill-mode: both;
+}
+
+.fire-bottom .main-fire {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  width: 75%;
+  height: 75%;
+  background-color: #ff7800;
+  transform: scaleX(0.8) rotate(45deg);
+  border-radius: 0 40% 100% 40%;
+  filter: blur(10px);
+  animation: glow 2s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.alert {
+/*  width: 100%;*/
+  padding: 12px 16px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+.alert.alert-danger {
+  background-color: rgba(0, 0, 0, 1);
+  border-color: rgba(220, 53, 69, 1);
+}
+.alert div {
+    color: rgba(255, 255, 255,1);
+}
+
+
